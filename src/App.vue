@@ -9,7 +9,7 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :데이터목록="데이터목록" />
+  <Container :데이터목록="데이터목록" :step="step" />
   <button @click="more">더보기</button>
   <div class="footer">
     <ul class="footer-button-plus">
@@ -30,6 +30,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      step: 0,
       데이터목록: Data,
       더보기클릭횟수: 0,
     };
