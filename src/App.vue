@@ -9,7 +9,7 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container />
+  <Container :데이터목록 = "데이터목록"/>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -20,9 +20,15 @@
 </template>
 
 <script>
+import Data from './assets/data.js';
 import Container from './components/Container.vue';
 // @ is an alias to /src
 export default {
+  data() {
+    return {
+      데이터목록: Data
+    }
+  },
   components: {
     Container,
   },
