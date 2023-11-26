@@ -1,5 +1,5 @@
 <template>
-  <div :class="필터 + ' filter-item'" :style="`background-image: url(${업로드이미지url})`">
+  <div :class="필터 + ' filter-item'" :style="`background-image: url(${업로드이미지url})`" @click="필터명mitt">
     <slot name="a"></slot>
   </div>
 </template>
@@ -9,6 +9,11 @@ export default {
     props: {
         업로드이미지url: String,
         필터: String,
+    },
+    methods : {
+      필터명mitt() {
+        this.$emitter.emit('필터명mitt수신', this.필터)
+      }
     },
     name: 'filterbox',
 };

@@ -11,7 +11,7 @@
 
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
-      <div class="upload-image" :style="`background-image: url(${업로드이미지url})`"></div>
+      <div :class="보여질적용필터 + ' filter-item'" class="upload-image" :style="`background-image: url(${업로드이미지url})`"></div>
       <div class="filters">
         <FilterBox :필터="필터" :업로드이미지url="업로드이미지url" v-for="필터 in 필터들" :key="필터">
           <template v-slot:a> {{필터}} </template>
@@ -21,7 +21,7 @@
 
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
-      <div class="upload-image" :style="`background-image: url(${업로드이미지url})`"></div>
+      <div :class="보여질적용필터 + ' filter-item'" class="upload-image" :style="`background-image: url(${업로드이미지url})`"></div>
       <div class="write">
         <textarea v-model="발행내용" @change="발행내용전송" class="write-box" placeholder="write!"></textarea>
       </div>
@@ -38,7 +38,8 @@ export default {
       데이터목록: this.데이터목록,
       필터들 : [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
 "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
-"reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"]
+"reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+      보여질적용필터 : "",
     };
   },
   components: {
@@ -54,6 +55,11 @@ export default {
     발행내용전송() {
       this.$emit('발행내용전송', this.발행내용);
     }
+  },
+  mounted() {
+    this.$emitter.on('필터명mitt수신', (필터) => {
+      this.보여질적용필터 = 필터;
+    })
   }
 };
 </script>

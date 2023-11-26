@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li v-if="step != 0">Cancel</li>
+      <li v-if="step != 0" @click="취소">Cancel</li>
     </ul>
     <ul class="header-button-right">
       <li v-if="step != 2 && step != 0" @click="step += 1">Next</li>
@@ -42,6 +42,7 @@ export default {
       step: 0,
       데이터목록: Data,
       더보기클릭횟수: 0,
+      발행시적용필터: "",
     };
   },
   components: {
@@ -61,7 +62,11 @@ export default {
       let url = URL.createObjectURL(업로드파일[0]);
       this.step += 1;
       this.업로드이미지url = url;
-      console.log(url);
+      console.log(url); 
+    },
+    취소() {
+      this.step = 0;
+      this.$router.go(-2);
     },
     발행() {
       var 내게시물 = {
@@ -72,17 +77,24 @@ export default {
         date: "May 15",
         liked: false,
         content: this.발행내용,
-        filter: "perpetua"
+        filter: this.발행시적용필터
       };
       this.데이터목록.unshift(내게시물);
+
       this.step = 0;
       this.업로드이미지url = "";
       this.발행내용 = "";
+      this.발행시적용필터 = "";
     },
     발행내용전송수신(content) {
       this.발행내용 = content;
     }
   },
+  mounted() {
+    this.$emitter.on('필터명mitt수신', (필터) => {
+      this.발행시적용필터 = 필터;
+    })
+  }
 };
 </script>
 
