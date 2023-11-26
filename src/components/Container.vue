@@ -8,10 +8,10 @@
         :게시물="게시물"
       />
     </div>
-    
+
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
-      <div class="upload-image"></div>
+      <div class="upload-image" :style="`background-image: url(${업로드이미지url})`"></div>
       <div class="filters">
         <div class="filter-1"></div>
         <div class="filter-1"></div>
@@ -23,9 +23,9 @@
 
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
-      <div class="upload-image"></div>
+      <div class="upload-image" :style="`background-image: url(${업로드이미지url})`"></div>
       <div class="write">
-        <textarea class="write-box">write!</textarea>
+        <textarea v-model="발행내용" @change="발행내용전송" class="write-box" placeholder="write!"></textarea>
       </div>
     </div>
   </div>
@@ -45,7 +45,13 @@ export default {
   props: {
     데이터목록: Array,
     step: Number,
+    업로드이미지url: String,
   },
+  methods: {
+    발행내용전송() {
+      this.$emit('발행내용전송', this.발행내용);
+    }
+  }
 };
 </script>
 
