@@ -15,11 +15,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      게시물: this.게시물,
-    }
-  },
   props: {
     게시물: Object,
   },
