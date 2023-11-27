@@ -6,6 +6,7 @@
         v-for="(게시물, index) in 데이터목록"
         :key="index"
         :게시물="게시물"
+        :index = "index"
       />
     </div>
 
