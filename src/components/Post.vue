@@ -17,9 +17,9 @@
 export default {
   props: {
     게시물: Object,
-    index: Number,
-  },
-};
+    index: Number
+  }
+}
 </script>
 
 <style scoped>

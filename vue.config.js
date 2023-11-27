@@ -3,6 +3,6 @@ module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false,
   chainWebpack: config => {
-    config.module.rules.delete('eslint');
+    config.module.rules.delete('eslint')
   }
 })
