@@ -27,12 +27,18 @@
         <textarea v-model="발행내용" @change="발행내용전송" class="write-box" placeholder="write!"></textarea>
       </div>
     </div>
+
+    <div v-if="step == 3">
+      <MyPage/>
+    </div>
   </div>
 </template>
 
 <script>
-import Post from './Post.vue'
-import FilterBox from './FilterBox.vue'
+import Post from './Post.vue';
+import FilterBox from './FilterBox.vue';
+import MyPage from './MyPage.vue';
+
 export default {
   data () {
     return {
@@ -44,7 +50,8 @@ export default {
   },
   components: {
     Post,
-    FilterBox
+    FilterBox,
+    MyPage
   },
   props: {
     데이터목록: Array,

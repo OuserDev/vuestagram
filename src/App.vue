@@ -17,10 +17,11 @@
     @발행내용전송="발행내용전송수신"
   />
 
-  <button @click="more" v-if="step == 0">더보기</button>
+  <!-- <button @click="more" v-if="step == 0">더보기</button>
   {{ $store.state.more }}
   <button @click="$store.dispatch('getData')" >더보기2</button>
-  <p> {{ name }} {{ age }} {{  }}</p>
+  <p> {{ name }} {{ age }} {{  }}</p> -->
+
   <div class="footer" v-if="step == 0">
     <ul class="footer-button-plus">
       <input @change="upload" type="file" id="file" class="inputfile" multiple="true" />
@@ -30,7 +31,6 @@
 </template>
 
 <script>
-import { tSMethodSignature, thisTypeAnnotation } from '@babel/types'
 import Data from './assets/data.js'
 import Container from './components/Container.vue'
 import axios from 'axios'
@@ -42,7 +42,7 @@ export default {
     return {
       발행내용: '',
       업로드이미지url: '',
-      step: 0,
+      step: 3,
       데이터목록: Data,
       더보기클릭횟수: 0,
       발행시적용필터: '',
